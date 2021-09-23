@@ -16,19 +16,6 @@ We depend on some python packages which need to be installed by the user:
 * S. M. Kamrul Hasan ([sh3190@rit.edu])
 * Cristian A. Linte
 
-# Contents 
-
-* [Data]()
-* [Method]()
-* [Results]()
-* [How to Run]()
-
-
-
--   [S. M. Kamrul Hasan](https://smkamrulhasan.github.io/) Rochester
-    Institute of Technology
--   [Cristian A. Linte](https://www.rit.edu/directory/calbme-cristian-linte) Rochester Institute of
-    Technology
 
 -   [](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7372295/)
 
