@@ -16,7 +16,6 @@ root_dir = "/mnt/media/cardiac_main/ACDC_100_training/*/*"
 files = glob.glob(root_dir)
 labels = []
 images = []
-# test_list = ['002','003','008','009','012','014','017','024','042','048']#
 test_list = ['001','007','008','011','013','022','024','033','052','059','064','065','066','068','075','080','081','083','084','093']
 for each in files:
     if "frame" in each and "gt" in each:
@@ -130,7 +129,6 @@ test_file.close()
 # files = glob.glob(root_dir)
 # labels = []
 # images = []
-# # test_list = ['002','003','008','009','012','014','017','024','042','048']#
 # test_list = ['001','007','008','011','013','022','024','033','052','059','064','065','066','068','075','080','081','083','084','093']
 # for each in files:
 #     if "frame" in each and "gt" in each:
