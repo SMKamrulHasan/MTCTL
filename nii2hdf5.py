@@ -23,12 +23,12 @@ for each in files:
     elif "frame" in each:
         images.append(each)
 
-os.makedirs('/mnt/media/cardiac_main/SASSnet-master/data/ACDC_test/data/slices',exist_ok=True)
+os.makedirs('/mnt/media/cardiac_main/data/ACDC_test/data/slices',exist_ok=True)
 prev_patient = "patient001"
 slice_num = 1
-train_file = open('/mnt/media/cardiac_main/SASSnet-master/data/ACDC_test/train_slices.list','w')
-test_file = open('/mnt/media/cardiac_main/SASSnet-master/data/ACDC_test/test_slices.list','w')
-test_h5_file = open('/mnt/media/cardiac_main/SASSnet-master/data/ACDC_test/all_slices.list','w')
+train_file = open('/mnt/media/cardiac_main/data/ACDC_test/train_slices.list','w')
+test_file = open('/mnt/media/cardiac_main/data/ACDC_test/test_slices.list','w')
+test_h5_file = open('/mnt/media/cardiac_main/data/ACDC_test/all_slices.list','w')
 for i in tqdm(range(len(images))):
     slice_num=1
     patient = images[i].split("/")[-2]
@@ -61,7 +61,7 @@ for i in tqdm(range(len(images))):
             case_label = cv2.resize(label[:,:,num],(224,224),interpolation=cv2.INTER_NEAREST)  
             
             if slice_num % 2 == 0:
-                hp = h5py.File("/mnt/media/cardiac_main/SASSnet-master/data/ACDC_test/data/slices/" + str(patient) + "_frame01"  + "_slice_" + str(int(slice_num/2)) + '.h5', 'w')
+                hp = h5py.File("/mnt/media/cardiac_main/data/ACDC_test/data/slices/" + str(patient) + "_frame01"  + "_slice_" + str(int(slice_num/2)) + '.h5', 'w')
                 hp.create_dataset('image', data=case_image)
                 hp.create_dataset('label', data=case_label)
                 train_file.write(str(patient) + "_frame01" + "_slice_" + str(int(slice_num/2)) +'\n')
@@ -69,7 +69,7 @@ for i in tqdm(range(len(images))):
 
             else:
 
-                hp = h5py.File("/mnt/media/cardiac_main/SASSnet-master/data/ACDC_test/data/slices/" + str(patient) + "_frame02"  + "_slice_" + str(int(slice_num/2+1))  + '.h5', 'w')
+                hp = h5py.File("/mnt/media/cardiac_main/data/ACDC_test/data/slices/" + str(patient) + "_frame02"  + "_slice_" + str(int(slice_num/2+1))  + '.h5', 'w')
                 hp.create_dataset('image', data=case_image)
                 hp.create_dataset('label', data=case_label)
                 train_file.write(str(patient) + "_frame02" + "_slice_" + str(int(slice_num/2+1)) +'\n')
@@ -83,13 +83,13 @@ for i in tqdm(range(len(images))):
             case_label = cv2.resize(label[:,:,num],(224,224),interpolation=cv2.INTER_NEAREST)
             image_h5[num], label_h5[num] = case_image, case_label
             if slice_num % 2 == 0:
-                hp = h5py.File("/mnt/media/cardiac_main/SASSnet-master/data/ACDC_test/data/slices/" + str(patient) + "_frame01" + "_slice_" + str(int(slice_num/2))  + '.h5', 'w')
+                hp = h5py.File("/mnt/media/cardiac_main/data/ACDC_test/data/slices/" + str(patient) + "_frame01" + "_slice_" + str(int(slice_num/2))  + '.h5', 'w')
                 hp.create_dataset('image', data=case_image)
                 hp.create_dataset('label', data=case_label)
                 test_file.write(str(patient) + "_frame01" + "_slice_" + str(int(slice_num/2))  +'\n')
                 slice_num+=1
             else:
-                hp = h5py.File("/mnt/media/cardiac_main/SASSnet-master/data/ACDC_test/data/slices/" + str(patient) + "_frame02" + "_slice_" + str(int(slice_num/2+1))  + '.h5', 'w')
+                hp = h5py.File("/mnt/media/cardiac_main/data/ACDC_test/data/slices/" + str(patient) + "_frame02" + "_slice_" + str(int(slice_num/2+1))  + '.h5', 'w')
                 hp.create_dataset('image', data=case_image)
                 hp.create_dataset('label', data=case_label)
                 test_file.write(str(patient) + "_frame02" + "_slice_" + str(int(slice_num/2+1))  +'\n')
@@ -135,10 +135,10 @@ test_file.close()
 #         labels.append(each)
 #     elif "frame" in each:
 #         images.append(each)
-# os.makedirs('/mnt/media/cardiac_main/SASSnet-master/data/ACDC_test/data',exist_ok=True)
+# os.makedirs('/mnt/media/cardiac_main/data/ACDC_test/data',exist_ok=True)
 # prev_patient = "patient001"
-# train_file = open('/mnt/media/cardiac_main/SASSnet-master/data/ACDC_test/train.list','w')
-# test_file = open('/mnt/media/cardiac_main/SASSnet-master/data/ACDC_test/test.list','w')
+# train_file = open('/mnt/media/cardiac_main/data/ACDC_test/train.list','w')
+# test_file = open('/mnt/media/cardiac_main/data/ACDC_test/test.list','w')
 # for i in tqdm(range(len(images))):
 #     patient = images[i].split("/")[-2]
 #     image = nb.load(images[i]).get_data()
@@ -163,12 +163,12 @@ test_file.close()
 #         case_image = cv2.resize(image,(224,224),interpolation=cv2.INTER_NEAREST)
 #         case_label = cv2.resize(label,(224,224),interpolation=cv2.INTER_NEAREST)  
         
-#         hp = h5py.File("/mnt/media/cardiac_main/SASSnet-master/data/ACDC_test/data/" + str(patient) + "_frame01" + '.h5', 'w')
+#         hp = h5py.File("/mnt/media/cardiac_main/data/ACDC_test/data/" + str(patient) + "_frame01" + '.h5', 'w')
 #         hp.create_dataset('image', data=case_image)
 #         hp.create_dataset('label', data=case_label)
 #         train_file.write(str(patient) + "_frame01" +'\n')
 
-#         hp = h5py.File("/mnt/media/cardiac_main/SASSnet-master/data/ACDC_test/data/" + str(patient) + "_frame02" + '.h5', 'w')
+#         hp = h5py.File("/mnt/media/cardiac_main/data/ACDC_test/data/" + str(patient) + "_frame02" + '.h5', 'w')
 #         hp.create_dataset('image', data=case_image)
 #         hp.create_dataset('label', data=case_label)
 #         train_file.write(str(patient) + "_frame02" +'\n')
@@ -178,12 +178,12 @@ test_file.close()
 #         case_image = cv2.resize(image,(224,224),interpolation=cv2.INTER_NEAREST)
 #         case_label = cv2.resize(label,(224,224),interpolation=cv2.INTER_NEAREST)
 
-#         hp = h5py.File("/mnt/media/cardiac_main/SASSnet-master/data/ACDC_test/data/" + str(patient) + "_frame01" + '.h5', 'w')
+#         hp = h5py.File("/mnt/media/cardiac_main/data/ACDC_test/data/" + str(patient) + "_frame01" + '.h5', 'w')
 #         hp.create_dataset('image', data=case_image)
 #         hp.create_dataset('label', data=case_label)
 #         test_file.write(str(patient) + "_frame01" +'\n')
 
-#         hp = h5py.File("/mnt/media/cardiac_main/SASSnet-master/data/ACDC_test/data/" + str(patient) + "_frame02" + '.h5', 'w')
+#         hp = h5py.File("/mnt/media/cardiac_main/data/ACDC_test/data/" + str(patient) + "_frame02" + '.h5', 'w')
 #         hp.create_dataset('image', data=case_image)
 #         hp.create_dataset('label', data=case_label)
 #         test_file.write(str(patient) + "_frame02"  +'\n')
